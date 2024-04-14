@@ -176,7 +176,7 @@ const handleTextGenerate = () => {
   isTextGenerating.value = true;
 
   storyEventSource.value = new EventSource(
-    `https://nottia-worker.caio-vinnicius2k.workers.dev/notes?prompt=${encodeURIComponent(prompt.value)}`,
+    `https://nottia-worker.caio-vinnicius2k.workers.dev/note?prompt=${encodeURIComponent(prompt.value)}`,
   );
 
   storyEventSource.value.onmessage = function (event) {
