@@ -168,6 +168,7 @@ function handleClose() {
   content.value = "";
   prompt.value = "";
   imageUrl.value = "";
+  isImageGenerating.value = false;
   isTextGenerating.value = false;
   storyEventSource.value?.close();
 }
@@ -211,6 +212,7 @@ function handleImageGenerate(prompt: string = "One piece") {
     })
     .catch((error) => {
       console.error("There was a problem:", error);
+      isImageGenerating.value = false;
     });
 }
 </script>
