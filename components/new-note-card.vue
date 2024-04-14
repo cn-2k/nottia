@@ -74,14 +74,6 @@
                 </ScContextMenuItem>
               </ScContextMenuSubContent>
             </ScContextMenuSub>
-            <ScContextMenuSeparator />
-            <ScContextMenuCheckboxItem checked>
-              Show Bookmarks Bar
-              <ScContextMenuShortcut>⌘⇧B</ScContextMenuShortcut>
-            </ScContextMenuCheckboxItem>
-            <ScContextMenuCheckboxItem
-              >Show Full URLs</ScContextMenuCheckboxItem
-            >
           </ScContextMenuContent>
           <p
             v-if="isImageGenerating"
@@ -184,7 +176,7 @@ const handleTextGenerate = () => {
   isTextGenerating.value = true;
 
   storyEventSource.value = new EventSource(
-    `https://nottia-worker.caio-vinnicius2k.workers.dev/story?prompt=${encodeURIComponent(prompt.value)}`,
+    `https://nottia-worker.caio-vinnicius2k.workers.dev/notes?prompt=${encodeURIComponent(prompt.value)}`,
   );
 
   storyEventSource.value.onmessage = function (event) {

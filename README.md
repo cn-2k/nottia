@@ -1,29 +1,9 @@
-![cover](https://github.com/cn-2k/nlw-expert-notes-nuxt/assets/59366705/fbd59606-b0c1-4cc4-ac72-79034dbcab8f)
+## About this project
+This project was maded for the Cloudflare AI Challenge from <a href="dev.to" target="_blank">dev.to</a>, it allows you to create notes with or without the help of artificial intelligence using two AI Workers models from Cloudflare to generate text (@cf/meta/llama-2-7b-chat-fp16) and generate images (@cf/stabilityai/stable-diffusion-xl-base-1.0).
 
-<!-- markdownlint-disable MD033 -->
-<!-- markdownlint-disable MD041 -->
-<div align="center">
-  <a>
-    <img alt="Nuxt 3" src="https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC822"/>
-  <a/>
-    <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
-    <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-</div>
+The project was splitted in two repositories, check the repo related to Cloudflare Worker for this app: [Nottia Worker](https://github.com/cn-2k/nottia-worker)
 
-<div align="center">
-
-# `NLW Expert - Notes (Nuxt)`
-</div>
-
-## Sobre o Projeto
-
-Aplicação desenvolvida para realizar o registro de notas/lembretes em uma interface intuitiva onde também é possível registra-las utilizando reconhecimento de voz.
-Aplicação reconstruída utilizando o framework Nuxt (Vuejs).
-
-> `<nlw/> Expert - Notes` foi um projeto desenvolvido durante o **Next Level Week**, evento online produzido pela [**Rocketseat**](https://www.rocketseat.com.br/).
-
-
-## Tecnologias
+## Techs used to build this project
 
 <table>
   <tbody>
@@ -41,34 +21,30 @@ Aplicação reconstruída utilizando o framework Nuxt (Vuejs).
   </tbody>
 </table>
 
-## Configurações
+## Installation Instructions
 
-### Requisitos
-
-Necessário realizar as instalações:
+### Requirements
 
 - [`Git`](https://git-scm.com/)
 - [`npm`](https://www.npmjs.com/)
 - [`Node`](https://nodejs.org/)
 
-Criar conta e configurar os serviços externos:
-
-- [`GitHub`](https://github.com/)
-
-### Clonar repositório
+### Clone the repo
 
 ```bash
-# Execute o comando git clone para realizar o clone do repositório
-$ https://github.com/cn-2k/nlw-expert-notes-nuxt.git
-# Entre na pasta do repositório clonado
-$ cd nlw-expert-notes-nuxt
+# Clone the repo with git clone command
+$ git clone https://github.com/cn-2k/nottia.git
+# Go to project folder
+$ cd nottia
 ```
 
-### Comandos importantes
+### Install dependencies and start the dev server
 
 ```bash
-# instalar dependências
+# Inside the project folder, install the necessary dependencies with npm install
 $ npm install
-# iniciar servidor
+# Start the server
 $ npm run dev
 ```
+
+After this the server will be avaiable on: [localhost:3000](http://localhost:3000/)
