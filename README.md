@@ -3,6 +3,16 @@ This project was maded for the Cloudflare AI Challenge from <a href="dev.to" tar
 
 The project was splitted in two repositories, check the repo related to Cloudflare Worker for this app: [Nottia Worker](https://github.com/cn-2k/nottia-worker)
 
+## Generating a note based on user prompt
+<div align="center">
+    <img src="https://github.com/cn-2k/nottia/assets/59366705/fcf60304-008a-4082-986e-ca0d39881ac9"">
+</div>
+
+## Creating a image based on user prompt
+<div align="center">
+    <img src="https://github.com/cn-2k/nottia/assets/59366705/5c742fdf-095c-4aba-8dac-ae814e34287e"">
+</div>
+
 ## Techs used to build this project
 
 <table>
