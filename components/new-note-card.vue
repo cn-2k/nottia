@@ -35,7 +35,9 @@
         </p>
       </div>
       <ScContextMenu v-if="!shouldShowOnboarding">
-        <ScContextMenuTrigger class="flex flex-1 flex-col">
+        <ScContextMenuTrigger
+          class="flex flex-1 flex-col overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/20"
+        >
           <ScContextMenuContent class="w-60 lg:w-[400px]">
             <div v-focus class="mb-2 p-2">
               <textarea
@@ -81,16 +83,19 @@
               >Show Full URLs</ScContextMenuCheckboxItem
             >
           </ScContextMenuContent>
-          <!-- <pre v-if="generatedImageUrl">{{
-            `![cover](${generatedImageUrl})`
-          }}</pre> -->
-          <!-- <img
-            v-if="generatedImageUrl"
-            :src="generatedImageUrl"
+          <p
+            v-if="isImageGenerating"
+            class="animate-pulse text-center text-sm text-slate-400"
+          >
+            Generating image, please wait...
+          </p>
+          <img
+            v-if="imageUrl"
+            :src="imageUrl"
             alt="image"
             srcset=""
-          /> -->
-          <button @click="handleImageGenerate()">Criar imgem</button>
+            class="h-auto w-full object-cover md:h-48"
+          />
           <div class="flex flex-1 flex-col gap-3 p-5">
             <textarea
               v-if="!shouldShowOnboarding && !isTextGenerating"
@@ -138,7 +143,9 @@ const shouldShowOnboarding = ref<boolean>(true);
 const isDialogOpen = ref<boolean>(false);
 const content = ref<string>("");
 const prompt = ref<string>("");
+const imageUrl = ref("");
 const isTextGenerating = ref<boolean>(false);
+const isImageGenerating = ref<boolean>(false);
 const storyEventSource = ref<EventSource | null>(null);
 
 function handleStartEditor() {
@@ -168,6 +175,7 @@ function handleClose() {
   shouldShowOnboarding.value = true;
   content.value = "";
   prompt.value = "";
+  imageUrl.value = "";
   isTextGenerating.value = false;
   storyEventSource.value?.close();
 }
@@ -194,20 +202,23 @@ const handleTextGenerate = () => {
   };
 };
 
-const imageUrl = ref("");
-
 function handleImageGenerate(prompt: string = "One piece") {
+  isImageGenerating.value = true;
   fetch("https://nottia-worker.caio-vinnicius2k.workers.dev/generate-image", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({ prompt }),
   })
     .then((response) => response.blob())
     .then((blob) => {
       imageUrl.value = URL.createObjectURL(blob);
+      content.value = `![cover](${imageUrl.value})` + "\n" + content.value;
+      isImageGenerating.value = false;
+    })
+    .catch((error) => {
+      console.error("There was a problem:", error);
     });
 }
 </script>
