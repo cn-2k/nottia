@@ -170,6 +170,7 @@ function handleClose() {
   imageUrl.value = "";
   isImageGenerating.value = false;
   isTextGenerating.value = false;
+  controller.abort();
   storyEventSource.value?.close();
 }
 
@@ -195,17 +196,27 @@ const handleTextGenerate = () => {
   };
 };
 
+// Create an instance of AbortController
+const controller = new AbortController();
+const signal = controller.signal;
+
 function handleImageGenerate(prompt: string = "One piece") {
   isImageGenerating.value = true;
+
   fetch("https://nottia-worker.caio-vinnicius2k.workers.dev/generate-image", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ prompt }),
+    signal,
   })
     .then((response) => response.blob())
     .then((blob) => {
+      if (signal.aborted) {
+        console.log("Request aborted");
+        return;
+      }
       imageUrl.value = URL.createObjectURL(blob);
       content.value = `![cover](${imageUrl.value})` + "\n" + content.value;
       isImageGenerating.value = false;
