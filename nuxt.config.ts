@@ -7,20 +7,33 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Nottia",
-      // meta: [{ name: "description", content: "My awesome Nuxt project" }],
       link: [{ rel: "icon", href: "/favicon.svg" }],
     },
   },
+
   devtools: { enabled: true },
   css: ["./assets/css/main.css"],
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/eslint-module",
+    "@nuxt/eslint",
     "shadcn-nuxt",
+    "nuxt-og-image",
   ],
+  
+  site: {
+    name: "Nottia",
+    url: "https://nottia.vercel.app",
+  },
 
-  eslint: { lintOnStart: false },
+  eslint: {
+    config: {
+      stylistic: {
+        quotes: "double",
+      },
+    },
+  },
+  
   googleFonts: {
     families: {
       Inter: [100, 300, 400, 500, 600, 700],
@@ -38,5 +51,4 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  ssr: false,
 });
